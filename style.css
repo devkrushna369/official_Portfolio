@@ -84,19 +84,18 @@ section {
 }
 
 .home {
-    display: flex;
-    align-items: center;
-    padding: 0 9%;
-    /* background: url('/images/pngfind.com-delphi-logo-png-4442055.png') no-repeat;  */
-   
-    background-size: cover;
-    background-position: center;
+  position: relative; /* Important for absolute positioning of the image */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9%;
 }
 
 
 .home-content {
     max-width: 60rem;
     z-index: 99;
+    
 }
 
 .home-content h1 {
@@ -262,19 +261,39 @@ section {
     width: 100%;
 }
 
-.home-imgHover {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 45%;
-    height: 100%;
-    background: transparent;
-    transition: 3s;
+.home-image {
+  position: absolute;
+  right: 9%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 360px;
+  height: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* make sure it's above background layers */
 }
 
-.home-imgHover:hover {
-    background: var(--bg-color);
-    opacity: .8;
+.home-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 0.3px;
+  border-radius: 50%;
+  border: 3px solid var(--main-color);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.home-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .home img {
+    display: none;
+  }
 }
 
 .about {
